@@ -1,0 +1,4 @@
+tqsdk
+flask
+plotly
+pandas

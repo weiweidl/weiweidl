@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Strategy Backtester</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Grid Strategy Backtester</h1>
+
+    <div class="container">
+        <div class="controls">
+            <h2>Strategy Parameters</h2>
+            <form id="paramsForm">
+                <div>
+                    <label for="symbol">Symbol:</label>
+                    <input type="text" id="symbol" name="symbol" value="SHFE.rb2410">
+                </div>
+                <div>
+                    <label for="gridSpacing">Grid Spacing:</label>
+                    <input type="number" id="gridSpacing" name="gridSpacing" value="10" step="0.1">
+                </div>
+                <div>
+                    <label for="orderVolume">Order Volume (per grid):</label>
+                    <input type="number" id="orderVolume" name="orderVolume" value="1" step="1">
+                </div>
+                <div>
+                    <label for="totalVolume">Total Volume (initial):</label>
+                    <input type="number" id="totalVolume" name="totalVolume" value="10" step="1">
+                </div>
+                <div>
+                    <label for="takeProfitPrice">Take Profit Price:</label>
+                    <input type="number" id="takeProfitPrice" name="takeProfitPrice" value="4000" step="0.1">
+                </div>
+                <div>
+                    <label for="stopLossPrice">Stop Loss Price:</label>
+                    <input type="number" id="stopLossPrice" name="stopLossPrice" value="3000" step="0.1">
+                </div>
+                <div>
+                    <label for="initialBalance">Initial Balance:</label>
+                    <input type="number" id="initialBalance" name="initialBalance" value="10000000" step="10000">
+                </div>
+            </form>
+
+            <h2>Backtest Control</h2>
+            <button id="startBacktestBtn">Start Backtest</button>
+            <button id="pauseBacktestBtn">Pause Backtest</button>
+            <button id="nextStepBtn">Next Step</button>
+            <button id="stopBacktestBtn" style="background-color: #dc3545;">Stop Backtest</button>
+        </div>
+
+        <div class="chart-area">
+            <div id="chartContainer"></div>
+        </div>
+    </div>
+
+    <div class="info-area">
+        <h2>Backtest Information</h2>
+        <div id="statusMessages">Status: Idle</div>
+        <div id="positionInfo">Position: N/A</div>
+        <div id="pnlInfo">PnL: N/A</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
